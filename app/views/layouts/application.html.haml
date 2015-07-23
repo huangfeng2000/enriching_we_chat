@@ -1,0 +1,26 @@
+<!doctype html>
+%html
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %title Longway Inspection
+    %meta{:content => "", :name => "description"}/
+    %meta{:content => "", :name => "author"}/
+    = javascript_include_tag "application"
+    = stylesheet_link_tag "application", :media => "all"
+    = csrf_meta_tags
+    = yield(:head)
+  %body
+    #modal-container.modal.fade
+    %header
+      .container
+        .row
+          .span12
+            = render 'layouts/navigation'
+    #main{:role => "main"}
+      .container
+        .row
+          .span12
+            = render 'layouts/messages'
+            = yield
+        %footer

@@ -1,0 +1,32 @@
+<h1>Listing point_exchanges</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>Remain Point</th>
+      <th>Exchange Point</th>
+      <th>Coupon</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @point_exchanges.each do |point_exchange| %>
+      <tr>
+        <td><%= point_exchange.customer.we_chat_nickname %></td>
+        <td><%= point_exchange.customer.customer_point.point %>元</td>
+        <td><%= point_exchange.point %>元</td>
+        <td><%= point_exchange.coupon.display_name %></td>
+        <td><%= link_to 'Show', point_exchange %></td>
+        <td><%= link_to 'Destroy', point_exchange, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Point exchange', new_point_exchange_path %>

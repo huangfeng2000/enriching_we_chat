@@ -1,0 +1,35 @@
+<h1>Listing coupons</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Vender</th>
+      <th>Password</th>
+      <th>Value</th>
+      <th>Use Status</th>
+      <th>Expire Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @coupons.each do |coupon| %>
+      <tr>
+        <td><%= coupon.vender %></td>
+        <td><%= coupon.password %></td>
+        <td><%= coupon.value %></td>
+        <td><%= coupon.used_status %></td>
+        <td><%= coupon.expire_date %></td>
+        <td><%= link_to 'Show', coupon %></td>
+        <td><%= link_to 'Edit', edit_coupon_path(coupon) %></td>
+        <td><%= link_to 'Destroy', coupon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Coupon', new_coupon_path %>

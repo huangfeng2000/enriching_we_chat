@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @customer_point.customer.we_chat_nickname %>
+</p>
+
+<p>
+  <strong>Point:</strong>
+  <%= @customer_point.point %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @customer_point.comment %>
+</p>
+
+<%= link_to 'Edit', edit_customer_point_path(@customer_point) %> |
+<%= link_to 'Back', customer_points_path %>

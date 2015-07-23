@@ -1,0 +1,24 @@
+%nav.navbar.navbar-default{role: "navigation"}
+  .container-fluid
+    .navbar-header
+      %a.navbar-brand{href: "/"} 英芮城
+    .collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+            = link_to "客户", '/customers'
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+            = link_to "客户积分", '/customer_points'
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+            = link_to "优惠券", '/coupons'
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+            = link_to "积分兑换", '/point_exchanges'
+      %ul.nav.navbar-nav.navbar-right
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+            = link_to "登录", '/customers'
+    / /.navbar-collapse
+  / /.container-fluid

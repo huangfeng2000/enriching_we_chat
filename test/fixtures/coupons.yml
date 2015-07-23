@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  vender: MyString
+  password: MyString
+  value: 1
+
+two:
+  vender: MyString
+  password: MyString
+  value: 1

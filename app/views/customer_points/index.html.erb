@@ -1,0 +1,31 @@
+<h1>Listing customer_points</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>Point</th>
+      <th>Comment</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customer_points.each do |customer_point| %>
+      <tr>
+        <td><%= customer_point.customer.we_chat_nickname %></td>
+        <td><%= customer_point.point %></td>
+        <td><%= customer_point.comment %></td>
+        <td><%= link_to 'Show', customer_point %></td>
+        <td><%= link_to 'Edit', edit_customer_point_path(customer_point) %></td>
+        <td><%= link_to 'Destroy', customer_point, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Customer point', new_customer_point_path %>

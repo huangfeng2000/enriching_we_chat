@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @point_exchange.customer.we_chat_nickname %>
+</p>
+
+<p>
+  <strong>Remain Point:</strong>
+  <%= @point_exchange.customer.customer_point.point %><span>元</span>
+</p>
+
+<p>
+  <strong>Exchange Point:</strong>
+  <%= @point_exchange.point %><span>元</span>
+</p>
+
+<p>
+  <strong>Coupon:</strong>
+  <%= @point_exchange.coupon.display_name %>
+</p>
+
+<%= link_to 'Back', point_exchanges_path %>

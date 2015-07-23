@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>We chat nickname:</strong>
+  <%= @customer.we_chat_nickname %>
+</p>
+
+<p>
+  <strong>We chat openid:</strong>
+  <%= @customer.we_chat_openid %>
+</p>
+
+<p>
+  <strong>Tel no:</strong>
+  <%= @customer.tel_no %>
+</p>
+
+<%= link_to 'Edit', edit_customer_path(@customer) %> |
+<%= link_to 'Back', customers_path %>

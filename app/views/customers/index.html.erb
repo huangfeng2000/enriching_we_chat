@@ -1,0 +1,33 @@
+<h1>Listing customers</h1>
+
+<%= link_to 'Show All Customer', '/customers?show_all=true' %>
+
+<table>
+  <thead>
+    <tr>
+      <th>We chat nickname</th>
+      <th>We chat openid</th>
+      <th>Tel no</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.we_chat_nickname %></td>
+        <td><%= customer.we_chat_openid %></td>
+        <td><%= customer.tel_no %></td>
+        <td><%= link_to 'Show', customer %></td>
+        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Customer', new_customer_path %>

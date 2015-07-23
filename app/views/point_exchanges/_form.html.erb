@@ -1,0 +1,33 @@
+<%= form_for(@point_exchange) do |f| %>
+  <% if @point_exchange.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@point_exchange.errors.count, "error") %> prohibited this point_exchange from being saved:</h2>
+
+      <ul>
+      <% @point_exchange.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :customer_id %><br>
+    <%= f.select :customer_id, customer_codes, {}, { id: 'customer_select' } %>
+  </div>
+  <div class="field">
+    <%= f.label 'Remain Point' %><br>
+    <%= f.label @remain_point, { id: 'remain_point_label'} %><%= f.label '元' %>
+  </div>
+  <div class="field">
+    <%= f.label 'Exchange Point' %><br>
+    <%= f.number_field :point %>
+  </div>
+  <div class="field">
+    <%= f.label :coupon_id %><br>
+    <%= f.select :coupon_id, coupon_codes %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
