@@ -7,7 +7,7 @@ class CustomersController < ApplicationController
     if params[:show_all]
       @customers = Customer.all
     else
-      @customers = Customer.all.where(delete_flag: false)
+      @customers = Customer.all.where(delete_flag: [false, nil])
     end
   end
 
