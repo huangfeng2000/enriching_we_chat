@@ -15,7 +15,7 @@ class PointExchangesController < ApplicationController
   # GET /point_exchanges/new
   def new
     @point_exchange = PointExchange.new
-    @remain_point = Customer.find(customer_codes[0][1]).customer_point.point
+    @remain_point = Customer.find(customer_codes[0][1]).point
   end
 
   # # GET /point_exchanges/1/edit
