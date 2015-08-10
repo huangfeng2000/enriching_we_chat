@@ -91,17 +91,12 @@ class WeChatController < ApplicationController
             {
               type: 'view',
               name: '公司简介',
-              url: 'http://www.bio-enriching.com/list.php?catid=2'
-            },
-            {
-              type: 'view',
-              name: '新闻中心',
-              url: 'http://www.bio-enriching.com/list.php?catid=36'
+              url: 'http://mp.weixin.qq.com/s?__biz=MzIxOTAyMTk4Nw==&mid=208266197&idx=2&sn=f57ec9ca0867a61f1f069ea6d054519a#rd'
             },
             {
               type: 'view',
               name: '联系我们',
-              url: 'http://www.bio-enriching.com/list.php?catid=50'
+              url: 'http://mp.weixin.qq.com/s?__biz=MzIxOTAyMTk4Nw==&mid=208266197&idx=3&sn=8325b2bb37bdcd76b278f17aa0a13319#rd'
             }
           ]
         },
@@ -109,9 +104,9 @@ class WeChatController < ApplicationController
           name: '产品中心',
           sub_button: [
             {
-              type: 'view',
+              type: 'media_id',
               name: '磁珠法试剂盒',
-              url: 'http://www.bio-enriching.com/list.php?catid=40'
+              media_id: 'stI_MkE6AU0WjzXaYJZMPozf_w3RQK8H-HuWCPWsQxY'
             },
             {
               type: 'view',
@@ -120,22 +115,27 @@ class WeChatController < ApplicationController
             },
             {
               type: 'view',
-              name: '仪器',
-              url: 'http://www.bio-enriching.com/list.php?catid=53'
-            },
-            {
-              type: 'view',
               name: '耗材',
               url: 'http://www.bio-enriching.com/list.php?catid=69'
             }]
         },
+
         {
-          type: 'click',
-          name: '我的积分',
-          key: 'MY_POINT'
+          name: '积分',
+          sub_button: [
+            {
+              type: 'media_id',
+              name: '积分介绍',
+              media_id: 'stI_MkE6AU0WjzXaYJZMPi7w8h_oeyjg6K7Nh1ZayoI'
+            },
+            {
+              type: 'view',
+              name: '我的积分',
+              url: 'http://mp.weixin.qq.com/s?__biz=MzIxOTAyMTk4Nw==&mid=208266522&idx=1&sn=ff042db23267f516e4226de8ab0662d8&scene=18#rd'
+            }]
         }]
     }
-    response = Typhoeus::Request.post(post_url, body: post_data.to_json)
+    response = Typhoeus::Request.post(post_url, body: encoding_transform(post_data.to_json))
     errcode = JSON.parse(response.body)["errcode"]
     if errcode == 0
       render text: '菜单创建成功'
@@ -143,6 +143,27 @@ class WeChatController < ApplicationController
       render text: "菜单创建失败：#{response.body}"
     end
     # render nothing:true
+  end
+
+  def fetch_material_list
+    post_url = "https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=#{get_access_token}"
+    post_data = {
+      type: "news",
+      offset: 0,
+      count: 20
+    }
+    response = Typhoeus::Request.post(post_url, body: post_data.to_json)
+    errcode = JSON.parse(response.body)["errcode"]
+    if errcode.nil?
+      material_list = JSON.parse(response.body)
+      render text: "素材列表获取成功"
+    else
+      render text: "素材列表获取失败：#{response.body}"
+    end
+  end
+
+  def encoding_transform(str)
+    str.gsub!(/\\u([0-9a-z]{4})/) {|s| [$1.to_i(16)].pack("U")}
   end
 
   private

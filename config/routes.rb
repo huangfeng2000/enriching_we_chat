@@ -5,6 +5,7 @@ EnrichingWeChat::Application.routes.draw do
   get 'point_exchanges/show_remain_point', to: 'point_exchanges#show_remain_point'
   get 'point_exchanges/:id/show_remain_point', to: 'point_exchanges#show_remain_point'
   get 'wechat/addmenu', to: 'we_chat#addmenu'
+  get 'wechat/fetch_material_list', to: 'we_chat#fetch_material_list'
 
   post 'wechat', to: 'we_chat#msg_post'
 
