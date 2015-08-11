@@ -3,9 +3,15 @@ require 'net/http'
 class WeChatController < ApplicationController
   protect_from_forgery with: :null_session
 
+  # enriching
   WE_CHAT_APPID = 'wx6f7f654fa403d982'
   WE_CHAT_secret = '243470137e472878da8d9c77dece4d09'
   WE_CHAT_TOKEN = 'san'
+
+  # mofeisituo
+  # WE_CHAT_APPID = 'wx6f18372bb7b6a786'
+  # WE_CHAT_secret = '88314eaff5c188af5c05297d0d1b64ce'
+  # WE_CHAT_TOKEN = 'san'
 
   def auth_token
     if check_signature?(params["timestamp"], params["signature"], params["nonce"])
@@ -34,7 +40,7 @@ class WeChatController < ApplicationController
     customer.update_we_chat_info(get_we_chat_info)
     customer_point = customer.point
     @reply_content = "您的积分是：#{customer_point} 点"
-    render partial: "we_chat/echo", layout: false, formats: :xml
+    render partial: "we_chat/image_text_message", layout: false, formats: :xml
   end
 
   def msg_event
